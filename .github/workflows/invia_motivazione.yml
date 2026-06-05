@@ -2,7 +2,7 @@ name: Invia Frase Motivazionale
 
 on:
   schedule:
-    - cron: '5 11 * * *'
+    - cron: '15 11 * * *'
   workflow_dispatch:
 
 jobs:
