@@ -1,26 +1,17 @@
 name: Invia Frase Motivazionale
 
 on:
-  schedule:
-    - cron: '15 11 * * *'
-  workflow_dispatch:
+  workflow_dispatch:   # Solo trigger manuale o da cronjob.org
 
 jobs:
   invia:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Scarica il codice
-        uses: actions/checkout@v4
-
-      - name: Configura Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Installa dipendenze
-        run: pip install requests
-
+      - run: pip install requests
       - name: Invia frase del giorno
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
